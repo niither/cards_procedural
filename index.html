@@ -1,0 +1,58 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+<script>
+  function createCard(name, image, rating, price, discount) {
+    let card = document.createElement("div");
+    card.id = name;
+    card.className = "card";
+
+    let h1 = document.createElement("h1");
+    h1.textContent = name;
+    card.appendChild(h1);
+
+    let h2 = document.createElement("h2");
+    h2.textContent = rating + '/5';
+    card.appendChild(h2);
+
+    let p = document.createElement("p");
+    p.textContent = price + ' UAH';
+    card.appendChild(p);
+
+    let p2 = document.createElement("p");
+    p2.textContent = price * (1-discount) + ` (${discount * 100}%)`;
+    card.appendChild(p2);
+
+    let img = document.createElement("img");
+    img.src = image;
+    card.appendChild(img);
+
+    cardBox.appendChild(card);
+  }
+
+  let cardBox = document.createElement("div");
+  cardBox.className = "cardBox";
+  document.body.appendChild(cardBox);
+
+  let pName = prompt("Enter product name");
+  let pPrice = prompt("Enter product price");
+  let pRating = prompt("Enter product rating (1-5)");
+  let pImage = prompt("Enter product image src");
+  let pDiscount = prompt("Enter product discount (0-1)");
+
+  for (let i = 0; i < 25; i++) {
+    createCard(pName, pImage, pRating, pPrice, pDiscount);
+  }
+</script>
+</body>
+
+</html>
